@@ -1,14 +1,22 @@
 ﻿namespace JavaScriptMaui
 {
+    /// <summary>
+    /// Main page of the Factorial Calculator application.
+    /// This page allows users to input a number and calculate its factorial using JavaScript.
+    /// </summary>
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-        private WebView webView;
+        private readonly WebView webView;
 
+        /// <summary>
+        /// Initializes a new instance of the MainPage class.
+        /// Sets up the WebView with the factorial calculation JavaScript function.
+        /// </summary>
         public MainPage()
         {
             InitializeComponent();
 
+            // Initialize WebView with JavaScript function
             webView = new WebView
             {
                 Source = new HtmlWebViewSource
@@ -26,8 +34,6 @@
                         return num;
                     }
                     </script>
-                    <h1>Fatorial em JavaScript</h1>
-                    <p>Use a função `factorial(num)` no console do navegador para calcular o fatorial de um número.</p>
                     </body>
                     </html>"
                 },
@@ -36,25 +42,21 @@
                 WidthRequest = 1
             };
 
+            // Add WebView to the page
             ((VerticalStackLayout)((ScrollView)Content).Content).Children.Add(webView);
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
-
-        private async void btnJava_Clicked(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the click event of the Calculate button.
+        /// Validates user input, calculates the factorial, and displays the result.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An EventArgs that contains no event data.</param>
+        private async void btnCalculate_Clicked(object sender, EventArgs e)
         {
             try
             {
+                // Validate user input
                 if (string.IsNullOrWhiteSpace(txtNumber.Text))
                 {
                     await DisplayAlert("Error", "Please enter a number", "OK");
@@ -67,14 +69,18 @@
                     return;
                 }
 
+                // Ensure WebView is loaded
                 await Task.Delay(500);
 
+                // Calculate factorial using JavaScript
                 string result = await webView.EvaluateJavaScriptAsync($"factorial({number})");
-                lblResult.Text = $"Factorial of {number} is {result}.";
+
+                // Display result
+                lblResult.Text = $"Factorial of {number} is {result}";
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", ex.Message, "OK");
+                await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
             }
         }
     }

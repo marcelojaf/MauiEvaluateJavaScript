@@ -1,14 +1,26 @@
-# MAUI Factorial Calculator
+# MAUI JavaScript Integration Demo
 
-This project is a cross-platform mobile application built with .NET MAUI (Multi-platform App UI) that demonstrates the integration of JavaScript within a MAUI app. The app allows users to calculate the factorial of a given number using a JavaScript function executed within a WebView.
+This project demonstrates how to execute JavaScript code within a .NET MAUI (Multi-platform App UI) application. It showcases the integration of web technologies in a cross-platform mobile app, using a simple factorial calculator as an example.
 
-## Features
+## Project Overview
 
-- Simple and intuitive user interface
-- Input validation for user entries
-- JavaScript integration for factorial calculation
-- Error handling and user feedback
-- Cross-platform compatibility (iOS, Android, Windows)
+The main goal of this application is to illustrate how .NET MAUI can execute JavaScript code and retrieve the results of that execution. This is achieved using a WebView component, which loads a custom HTML/JavaScript page and allows interaction between the C# code and the JavaScript functions.
+
+## Key Features
+
+- Integration of JavaScript in a .NET MAUI app
+- Execution of JavaScript functions from C# code
+- Retrieval and display of JavaScript execution results
+- Simple user interface for input and output
+- Error handling and input validation
+
+## How It Works
+
+1. The app initializes a WebView with a custom HTML page containing JavaScript functions.
+2. User input is collected through the MAUI UI.
+3. When the user requests a calculation, the app validates the input.
+4. The app then uses the WebView to execute the appropriate JavaScript function.
+5. The result from the JavaScript execution is retrieved and displayed to the user.
 
 ## Technologies Used
 
@@ -18,6 +30,12 @@ This project is a cross-platform mobile application built with .NET MAUI (Multi-
 - JavaScript
 - WebView
 
+## Project Structure
+
+- `MainPage.xaml`: Contains the UI layout for the app
+- `MainPage.xaml.cs`: Contains the logic for handling user input and JavaScript integration
+- WebView (in code): Loads the HTML/JavaScript and facilitates the execution of JavaScript functions
+
 ## Getting Started
 
 ### Prerequisites
@@ -25,38 +43,27 @@ This project is a cross-platform mobile application built with .NET MAUI (Multi-
 - Visual Studio 2022 with .NET MAUI workload installed
 - .NET 6.0 SDK or later
 
-### Installation
-
-1. Clone the repository
-   ```
-   git clone https://github.com/marcelojaf/MauiEvaluateJavaScript.git
-   ```
-2. Open the solution in Visual Studio 2022
-3. Restore NuGet packages
-4. Build the solution
-
 ### Running the App
 
-1. Select your target platform (Android, iOS, or Windows)
-2. Press F5 or click the "Run" button in Visual Studio
+1. Clone the repository
+2. Open the solution in Visual Studio 2022
+3. Select your target platform (Android, iOS, or Windows)
+4. Press F5 or click the "Run" button in Visual Studio
 
-## How It Works
+## Extending the Project
 
-1. The app uses a WebView to load a simple HTML page containing a JavaScript function for factorial calculation.
-2. When the user enters a number and clicks the "Calculate Factorial" button, the app validates the input.
-3. If the input is valid, the app uses the WebView to execute the JavaScript function and calculate the factorial.
-4. The result is then displayed to the user.
+This demo uses a factorial calculator as an example, but the same principles can be applied to execute various JavaScript functions within a MAUI app. Some ideas for extension include:
 
-## Project Structure
-
-- `MainPage.xaml`: Contains the UI layout for the app
-- `MainPage.xaml.cs`: Contains the logic for handling user input and JavaScript integration
+- Implementing more complex mathematical operations
+- Adding string manipulation functions
+- Creating a multi-function calculator
+- Demonstrating Ajax calls (simulated or to actual APIs) within the WebView
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Feel free to submit pull requests or open issues to suggest improvements or report bugs.
 
 ## Acknowledgments
 
-- Thanks to the .NET MAUI team for providing a great cross-platform development framework
-- Inspired by the need for simple demonstrations of JavaScript integration in MAUI apps
+- Thanks to the .NET MAUI team for providing a powerful cross-platform development framework
+- Inspired by the need to demonstrate seamless integration of web technologies in mobile apps
